@@ -18,6 +18,13 @@ cd $ROOT_DIR/${VENDOR_DIR}
 
 mkdir -p ${BUILD_DIR}/${VENDOR_DIR}
 
+echo "-----> Download pngout"
+
+PNGOUT_URL="http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux-static.tar.gz"
+
+curl -L --silent $PNGOUT_URL | tar xz
+cp -v ./pngout-20130221-linux-static/x86_64/pngout-static ./image-optim/pngout | indent
+
 cp -vr ./image-optim ${BUILD_DIR}/${VENDOR_DIR} | indent
 export PATH="$PATH:$HOME/vendor/image-optim"
 
@@ -33,6 +40,8 @@ ln -s ${BUILD_DIR}/${VENDOR_DIR}/image-optim/jpegoptim jpegoptim
 ln -s ${BUILD_DIR}/${VENDOR_DIR}/image-optim/jpegtran jpegtran
 ln -s ${BUILD_DIR}/${VENDOR_DIR}/image-optim/optipng optipng
 ln -s ${BUILD_DIR}/${VENDOR_DIR}/image-optim/pngcrush pngcrush
+ln -s ${BUILD_DIR}/${VENDOR_DIR}/image-optim/pngout pngout
+ln -s ${BUILD_DIR}/${VENDOR_DIR}/image-optim/pngquant pngquant
 
 echo "-----> Adding image-optim binaries to PATH"
 
